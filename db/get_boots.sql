@@ -1,4 +1,4 @@
 SELECT *
 FROM products
 where category = 'boots'
-ORDER BY price
+ORDER BY price DESC

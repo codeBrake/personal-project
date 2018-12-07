@@ -24,8 +24,7 @@ class Goggles extends Component {
         })
     }
     addToCart = (id) => {
-        axios.post(`/api/cart/${id}`).then(results => {
-            console.log(11111, results)
+        axios.post(`/api/cart`, { product_id: id }).then(results => {
             this.props.getCart(results.data)
         })
     }

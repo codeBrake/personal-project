@@ -17,15 +17,14 @@ class Boots extends Component {
     }
     componentDidMount(){
         axios.get('/api/boots').then(response => {
-            console.log(11111111111, response)
+            
             this.setState({
                 boots: response.data 
             })
         })
     }
     addToCart = (id) => {
-        axios.post(`/api/cart/${id}`).then(results => {
-            console.log(11111, results)
+        axios.post(`/api/cart`, { product_id: id }).then(results => {
             this.props.getCart(results.data)
         })
     }

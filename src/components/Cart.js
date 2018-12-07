@@ -11,25 +11,27 @@ import {Link} from 'react-router-dom'
 class Cart extends Component {
 
     componentDidMount() {
-        axios.get('/api/cart').then(results => {
+        axios.get('/api/cart/').then(results => {
             this.props.getCart(results.data)
         })
     }
-    
-
-    checkout = () => {
-        if(this.props.cart.length) {
-            axios.delete('/api/cart/checkout').then(results => {
-                alert('Thank you for your purchase!')
-                this.props.getCart(results.data)
-            })
-        } else {
-            alert("Please add items to your cart to checkout")
-        }
-    }
-
+    // checkout = () => {
+    //     if(this.props.cart.length) {
+    //         axios.delete('/api/cart/checkout').then(results => {
+    //             alert('Thank you for your purchase!')
+    //             this.props.getCart(results.data)
+    //         })
+    //     } else {
+    //         alert("Please add items to your cart to checkout")
+    //     }
+    // }
     render() {
-        let cartTotal = 0
+        let boardsTotal = 0
+        let bindingsTotal = 0
+        let bootsTotal = 0
+        let gogglesTotal = 0
+        let cartTotal = boardsTotal + bindingsTotal + bootsTotal + gogglesTotal
+
         let cart = this.props.cart.map(e => {
             cartTotal += e.price * e.quantity
             return (
@@ -37,7 +39,7 @@ class Cart extends Component {
             )
         })
         let boards = this.props.cart.filter(e => {
-            cartTotal += e.price * e.quantity
+            boardsTotal += e.price * e.quantity
             return(
                 e.category === 'boards'
             )
@@ -48,7 +50,7 @@ class Cart extends Component {
             )
         })
         let bindings = this.props.cart.filter(e => {
-            cartTotal += e.price * e.quantity
+            bindingsTotal += e.price * e.quantity
             return(
                 e.category === 'bindings'
             )
@@ -59,7 +61,7 @@ class Cart extends Component {
             )
         })
         let goggles = this.props.cart.filter(e => {
-            cartTotal += e.price * e.quantity
+            gogglesTotal += e.price * e.quantity
             return(
                 e.category === 'goggles'
             )
@@ -69,7 +71,7 @@ class Cart extends Component {
             )
         })
         let boots = this.props.cart.filter(e => {
-            cartTotal += e.price * e.quantity
+            bootsTotal += e.price * e.quantity
             return(
                 e.category === 'boots'
             )
@@ -80,6 +82,7 @@ class Cart extends Component {
         })
         
         return (
+            
             <div>
                     <Header {...this.props}/>
                     
@@ -95,37 +98,55 @@ class Cart extends Component {
                             </div>
                             :
                             <div>
-
-                                <div className="cart-container">
-                                    <h1>
-                                        Boards:
-                                    </h1>
-                                    {boardsToDisplay}
-                                </div>
-                                <div className="cart-container">
-                                    <h1>
-                                        Bindings:
-                                    </h1>
-                                    {bindingsToDisplay}
-                                </div>
-                                <div className="cart-container">
-                                    <h1>
-                                        Boots:
-                                    </h1>
-                                    {boots}
-                                </div>
-                                <div className="cart-container">
-                                    <h1>
-                                        Goggles:
-                                    </h1>
-    
-                                    {goggles}
-                                </div>
+                                {
+                                    boardsToDisplay.length === 0 ?
+                                    (null)
+                                    :
+                                    <div className="cart-container">
+                                        <h1>
+                                            Boards:
+                                        </h1>
+                                        {boardsToDisplay}
+                                    </div>
+                                }
+                                {
+                                    bindingsToDisplay.length === 0 ?
+                                    (null)
+                                    :
+                                    <div className="cart-container">
+                                        <h1>
+                                            Bindings:
+                                        </h1>
+                                        {bindingsToDisplay}
+                                    </div>
+                                }
+                                {
+                                    boots.length === 0 ?
+                                    (null)
+                                    :
+                                    <div className="cart-container">
+                                        <h1>
+                                            Boots:
+                                        </h1>
+                                        {boots}
+                                    </div>
+                                }
+                                {
+                                    goggles.length === 0 ?
+                                    (null)
+                                    :
+                                    <div className="cart-container">
+                                        <h1>
+                                            Goggles:
+                                        </h1>
+        
+                                        {goggles}
+                                    </div>
+                                }
                                 
-    
                                 <h2>Grand Total: ${Math.floor(cartTotal * 100) / 100}</h2>
 
-                                <button className="checkout-button" onClick={this.checkout}>Checkout</button>
+                                <Link to="/checkout"><button className="checkout-button">Checkout</button></Link>
                                 <Link to="/"><button className="checkout-button">Home</button></Link>
                             </div>
                             }

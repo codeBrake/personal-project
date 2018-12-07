@@ -8,10 +8,12 @@
     "body-parser": "^1.18.3",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
+    "express-parser": "^1.0.0",
     "express-session": "^1.15.6",
     "font-awesome": "^4.7.0",
     "massive": "^5.5.3",
     "react": "^16.6.3",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.6.3",
     "react-fontawesome": "^1.6.1",
     "react-headroom": "^2.2.4",
@@ -19,8 +21,10 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
     "react-scrollable-anchor": "^0.6.1",
+    "react-stripe-elements": "^2.0.1",
     "react-toastify": "^4.4.3",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "stripe": "^6.18.0"
   },
   "scripts": {
     "start": "react-scripts start",

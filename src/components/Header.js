@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
+
 class Header extends Component {
     constructor(){
         super()
@@ -18,7 +19,8 @@ class Header extends Component {
             results: [],
             errorMessage: '',
             slide: 0, //how much it slides down
-            lastScrollY: 0  //current position in state
+            lastScrollY: 0,  //current position in state
+            userName: ''
         }
     }
 
@@ -55,7 +57,9 @@ class Header extends Component {
     handleLogout = () => {
         axios.get('/auth/logout').then(response => {
             this.props.userLoggedOut()
+            toast.success('Successfully logged out')
         })
+      
     }
     handleInputChange = (e) => {
         
@@ -88,6 +92,11 @@ class Header extends Component {
                         {
                             this.state.showMenu ? ( 
                                 <div className="drop-menu" onMouseLeave={this.showMenu}>
+                                    {
+                                        this.props.isAuthenticated ?
+                                        <Link to="/" className="menu-button-user">Logged in</Link>
+                                        : (null)
+                                    }
                                    <Link to="/" className="menu-button">Home</Link>
                                    <Link to="/boards" className="menu-button">Boards</Link>
                                    <Link to="/32boots" className="menu-button">Thirty-Two Boots</Link>
@@ -103,17 +112,39 @@ class Header extends Component {
                                     <Link to="/login" className="menu-button">Cart</Link>
                                     
                                 
+                                    } 
+                                    {   this.props.isAuthenticated ?
+
+                                        (null)
+
+                                        :
+
+                                        <Link to="/login" className="menu-button">Login</Link>
                                     }
-                                   <Link to="/login" className="menu-button">Login</Link>
-                                   <Link to="/" className="menu-button" onClick={this.handleLogout}>Logout</Link>
-                                   <Link to="/register" className="menu-button">Register</Link>
+                                    {
+                                        this.props.isAuthenticated ?
+                                        
+                                        <Link to="/" className="menu-button" onClick={this.handleLogout}>Logout</Link>
+                                        :
+                                        (null)
+                                    }
+                                    {
+                                        this.props.isAuthenticated ?
+                                        (null)
+                                        :
+
+                                        <Link to="/register" className="menu-button">Register</Link>
+
+                                    }
+                                    
                                 </div>
                             ) : (null)
                         }
                         <Link to="/" className="company-name">DANG</Link>
-                            <ToastContainer
-                            position="top-center"
-                            autoClose={3000}
+                            
+                        <ToastContainer
+                            position="top-left"
+                            autoClose={5000}
                             hideProgressBar={false}
                             newestOnTop={false}
                             closeOnClick
@@ -121,9 +152,11 @@ class Header extends Component {
                             pauseOnVisibilityChange
                             draggable
                             pauseOnHover
-                            />
+                           
+                            
+                        />
                          
-                         {
+                        {
                             this.state.showSearch ? (
                                 <form>
                                     <input 
@@ -138,11 +171,12 @@ class Header extends Component {
                                 
                             ) : (null)
                         }  
+                    
                     <div className="links">
                         
                         <span className="nav-link"><i className="fa fa-search" onClick={this.showSearch}></i></span>
-
-                        <span className="nav-link"><i className="fa fa-bars" onClick={this.showMenu} ></i></span>
+                        
+                        <span className="nav-link"><i className="fa fa-bars" onClick={this.showMenu} transition={10000} ></i></span>
 
                         {this.props.isAuthenticated ?
                         

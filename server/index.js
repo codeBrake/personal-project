@@ -1,9 +1,9 @@
+require('dotenv').config()
 const express = require('express')
 const session = require('express-session')
 const massive = require('massive')
 const bodyParser = require('body-parser')
-
-require('dotenv').config()
+const stripe = require('stripe')(process.env.STRIPEAPIKEY_PRIVATE)
 
 
 const ac = require('./controllers/Auth')
@@ -39,10 +39,11 @@ app.get('/auth/logout', ac.logout)
 app.get('/auth/currentUser', ac.getCurrentUser)
 
 app.get('/api/cart', cc.getCart)
-app.post('/api/cart/:id', cc.addToCart)
+app.post('/api/cart', cc.addToCart)
 app.put('/api/cart/:id', cc.updateQuantity)
 app.delete('/api/cart/checkout', cc.checkout)
 app.delete('/api/cart/:id', cc.deleteItem)
+
 
 app.get('/api/products', pc.getProducts)
 app.get('/api/products/search', sc.searchProducts)
@@ -52,7 +53,24 @@ app.get('/api/boots', bc.getBoots)
 app.get('/api/bindings', bindc.getBindings)
 app.get('/api/goggles', gc.getGoggles)
 
-
+app.post('/charge', async (req, res) => {
+    try {
+        let {amount} = req.body
+        
+        console.log(req.body)
+      let {status} = await stripe.charges.create({
+        amount,
+        currency: "usd",
+        description: "An example charge",
+        source: req.body.data.token
+      });
+  
+      res.json({status});
+    } catch (err) {
+        console.log(123455678789, err)
+      res.status(500).end();
+    }
+  });
 
 app.listen(PORT, () => {
     console.log('listening on port', PORT)

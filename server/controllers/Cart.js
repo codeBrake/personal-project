@@ -2,24 +2,25 @@ module.exports = {
     getCart: (req, res) => {
         const db = req.app.get('db')
         let {id} = req.session.user
-        db.get_cart([id]).then(cart => {
+        db.get_cart(id).then(cart => {
             res.status(200).send(cart)
         })
     },
     
+    
     addToCart: (req, res) => {
         const db = req.app.get('db')
-        let {id} = req.params
+        let { product_id } = req.body
         let {id: user_id} = req.session.user
-        db.get_cart().then(cart => {
-            let index = cart.findIndex(a => a.id === +id)
+        db.get_cart(user_id).then(cart => {
+            let index = cart.findIndex(a => a.product_id === +product_id)
             if(index === -1){
-                db.add_to_cart([user_id, id]).then(cart => {
+                db.add_to_cart([user_id, product_id]).then(cart => {
                     res.status(200).send(cart)
                 })
             }else{
                 let quantity = cart[index].quantity + 1
-                db.update_quantity(id, quantity).then(cart => {
+                db.update_quantity(product_id, quantity).then(cart => {
                     res.status(200).send(cart)
                 }) 
             }

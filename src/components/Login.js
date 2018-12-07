@@ -37,6 +37,7 @@ class Login extends Component {
             axios.post('/auth/login', this.state).then(response => {
                 let user = response.data
                 this.props.userLoggedIn(user)
+                toast.success('Successfully logged in')
             }).catch(error => {
                 console.log(error.response)
                 
@@ -48,6 +49,7 @@ class Login extends Component {
         axios.post('/auth/login', this.state).then(response => {
             let user = response.data
             this.props.userLoggedIn(user)
+            toast.success('Successfully logged in')
         }).catch(error => {
             console.log(error.response)
             toast.error('The email or password you entered is incorrect')

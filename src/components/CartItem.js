@@ -49,8 +49,9 @@ class CartItem extends Component {
                     <h3>Quantity: {quantity}</h3>
                     <i class="fa fa-plus-square" onClick={() => this.updateQuantity('up')}></i>
                     <i class="fa fa-minus-square" onClick={() => this.updateQuantity('down')}></i>
-                    <p>Total: ${Math.floor(price * quantity * 100) / 100}</p>
+                    
                 </div>
+                <br></br>
                 <button className="cart-button" onClick={this.deleteItem}>Remove</button>
             </div>
         )

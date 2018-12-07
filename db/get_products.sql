@@ -1,4 +1,4 @@
 SELECT *
 FROM products
 where category = 'boards'
-order by brand 
+order by price DESC

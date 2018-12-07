@@ -35,7 +35,7 @@ class Register extends Component {
                 this.props.userLoggedIn(user)
             }).catch(error => {
                 console.log(error.response)
-                
+                toast.error('email already exists')
             })
         }
     }
