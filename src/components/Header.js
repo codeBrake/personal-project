@@ -94,7 +94,7 @@ class Header extends Component {
                                 <div className="drop-menu" onMouseLeave={this.showMenu}>
                                     {
                                         this.props.isAuthenticated ?
-                                        <Link to="/" className="menu-button-user">Logged in</Link>
+                                        <Link to="/" className="menu-button-user">Logged in as {this.props.user.name}</Link>
                                         : (null)
                                     }
                                    <Link to="/" className="menu-button">Home</Link>
@@ -196,9 +196,10 @@ class Header extends Component {
     }
 }
 function mapStateToProps(state){
-    let {isAuthenticated} = state
+    let {isAuthenticated, user} = state
     return{
-        isAuthenticated
+        isAuthenticated,
+        user
     }
 }
 
