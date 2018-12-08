@@ -29,6 +29,9 @@ class Details extends Component {
             this.props.getCart(results.data)
         })
     }
+    goBack = () => {
+        window.history.back()
+    }
     render(){
         
         let itemToDisplay = this.state.item.map(item => {
@@ -41,7 +44,7 @@ class Details extends Component {
                             <div className="product">
                                 <div>
                                     
-                                    <img src={`${item.img_url}`} style={{height: 400, width: 400}} alt=""/> 
+                                    <img className="mobile-product" src={`${item.img_url}`} style={{height: 400, width: 400}} alt=""/> 
                                 </div>
                                 <div className="board-info">
                                     <h1>{item.brand}</h1>
@@ -58,15 +61,16 @@ class Details extends Component {
                                     <div></div>
                                     }
                                 </div>
+                                
                             </div>
                             {
                                 item.category === 'boards' ?
                                 <div className="rider-profile">
                                     
-                                        <div >
+                                        <div className="rider-profile" >
                                             <h1>{item.rider_name}</h1>
-                                            <img id="profile-img" src={`${item.profile_img_url}`} style={{height: 300, width: 400}} alt=""/>
-                                                <p>{item.bio}</p>
+                                            <img className="profile-img" src={`${item.profile_img_url}`} style={{height: 300, width: 400}} alt=""/>
+                                                <p id="bio-none">{item.bio}</p>
                                                 <iframe className="youtube" width="800" height="500" src={item.video_url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                         </div>
                                 </div>
@@ -105,8 +109,9 @@ class Details extends Component {
         return(
             <div>
                 <Header {...this.props}/>
-                <div>
+                <div className="details-div">
                     {itemToDisplay}
+                    <button className="back-button" onClick={this.goBack}>Back</button>
                 </div>
                 <Footer/>
             </div>

@@ -88,7 +88,7 @@ class Header extends Component {
     render(){
 
         return(
-                <header className="navbar" style={{transform: `translate(0, ${this.state.slide})`, transition: 'transform 300ms linear'}}>
+                <header className="navbar navbar-mobile" style={{transform: `translate(0, ${this.state.slide})`, transition: 'transform 300ms linear'}}>
                         {
                             this.state.showMenu ? ( 
                                 <div className="drop-menu" onMouseLeave={this.showMenu}>
@@ -98,7 +98,7 @@ class Header extends Component {
                                         : (null)
                                     }
                                    <Link to="/" className="menu-button">Home</Link>
-                                   <Link to="/boards" className="menu-button">Boards</Link>
+                                   <Link to="/boards" className="menu-button">Snowboards</Link>
                                    <Link to="/32boots" className="menu-button">Thirty-Two Boots</Link>
                                    <Link to="/bindings" className="menu-button">Union Bindings</Link>
                                    <Link to="/goggles" className="menu-button">Electric Goggles</Link>

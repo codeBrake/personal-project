@@ -65,7 +65,7 @@ class Boards extends Component {
 
                 </div>
                 <div className="boards-margin">
-                    <h1>Boards</h1>
+                    <h1>Snowboards</h1>
                     {this.props.isAuthenticated ?
                     
                     <div></div>
