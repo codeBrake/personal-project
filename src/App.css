@@ -652,7 +652,10 @@ input:focus ~ .highlight {
     font-size: 25px;
     padding: 10px 15px;
   }
-  
+  .navbar{
+    transition: none;
+    transform: none;
+  }
   .company-name{
     font-size: 22px;
   }

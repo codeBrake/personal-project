@@ -30,17 +30,18 @@ class Header extends Component {
     componentWillUnmount(){
         window.removeEventListener('scroll', this.handleScroll)
     }
-    handleScroll = () => {
-        const { lastScrollY } = this.state
-        const currentScrollY = window.scrollY
-
-        if(currentScrollY > lastScrollY){
-            this.setState({ slide: '-80px' })
-        }else {
-            this.setState({ slide: '0px' })
-        }
-        this.setState({ lastScrollY: currentScrollY })
-    }
+    // handleScroll = () => {
+        
+    //     const { lastScrollY } = this.state
+    //     const currentScrollY = window.scrollY
+        
+    //     if(currentScrollY > lastScrollY){
+    //         this.setState({ slide: '-80px' })
+    //     }else {
+    //         this.setState({ slide: '0px' })
+    //     }
+    //     this.setState({ lastScrollY: currentScrollY })
+    // }
 
     showMenu = () => {
         this.setState({
