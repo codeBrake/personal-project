@@ -78,7 +78,7 @@ class CheckOut extends Component {
 
                 <div className="checkout">
                     <div>
-                        <h3>To complete your purchase please enter a valid credit card number</h3>
+                        <h3>Please enter valid payment to continue with your purchase</h3>
                         <br></br>
                         <CardElement style={{base: {fontSize: '22px'}}}className="payment"/>
                     </div>

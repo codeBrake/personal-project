@@ -46,12 +46,14 @@ class Boards extends Component {
                                 <p>{product.model}</p>
                                 <p>{product.size}cm</p>
                                 <p>${product.price}</p>
-                                {this.props.isAuthenticated ? 
                                 
-                                <button className="cart-button" onClick={() => this.addToCart(id)}>Add to Cart</button>
-                                :
-                                <div></div>
+                                {
+                                    this.props.isAuthenticated ? 
+                                    <button className="cart-button" onClick={() => this.addToCart(id)}>Add to Cart</button>
+                                    :
+                                    <Link to="/login"><button className="cart-button">Add to Cart</button></Link>
                                 }
+                                
                             </div>
                     </div>
                 )
@@ -66,15 +68,7 @@ class Boards extends Component {
                 </div>
                 <div className="boards-margin">
                     <h1>Snowboards</h1>
-                    {this.props.isAuthenticated ?
                     
-                    <div></div>
-
-                    :
-
-                    <h2><Link to="/login">Login</Link> to add to cart</h2>
-
-                    }
 
                 </div>
                 

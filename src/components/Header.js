@@ -30,18 +30,18 @@ class Header extends Component {
     componentWillUnmount(){
         window.removeEventListener('scroll', this.handleScroll)
     }
-    // handleScroll = () => {
+    handleScroll = () => {
         
-    //     const { lastScrollY } = this.state
-    //     const currentScrollY = window.scrollY
+        const { lastScrollY } = this.state
+        const currentScrollY = window.scrollY
         
-    //     if(currentScrollY > lastScrollY){
-    //         this.setState({ slide: '-80px' })
-    //     }else {
-    //         this.setState({ slide: '0px' })
-    //     }
-    //     this.setState({ lastScrollY: currentScrollY })
-    // }
+        if(currentScrollY > lastScrollY){
+            this.setState({ slide: '-5px' })
+        }else {
+            this.setState({ slide: '0px' })
+        }
+        this.setState({ lastScrollY: currentScrollY })
+    }
 
     showMenu = () => {
         this.setState({
@@ -86,8 +86,9 @@ class Header extends Component {
             })
         }
     }
+    
     render(){
-
+        
         return(
                 <header className="navbar navbar-mobile" style={{transform: `translate(0, ${this.state.slide})`, transition: 'transform 300ms linear'}}>
                         {
@@ -95,8 +96,8 @@ class Header extends Component {
                                 <div className="drop-menu" onMouseLeave={this.showMenu}>
                                     {
                                         this.props.isAuthenticated ?
-                                        <Link to="/" className="menu-button-user">Logged in as {this.props.user.name}</Link>
-                                        : (null)
+                                        <Link to="/" className="menu-button-user">Welcome {this.props.user.name}</Link>
+                                        : (null) 
                                     }
                                    <Link to="/" className="menu-button">Home</Link>
                                    <Link to="/boards" className="menu-button">Snowboards</Link>
@@ -125,7 +126,7 @@ class Header extends Component {
                                     {
                                         this.props.isAuthenticated ?
                                         
-                                        <Link to="/" className="menu-button" onClick={this.handleLogout}>Logout</Link>
+                                        <Link to="/login" className="menu-button" onClick={this.handleLogout}>Logout</Link>
                                         :
                                         (null)
                                     }
@@ -142,10 +143,10 @@ class Header extends Component {
                             ) : (null)
                         }
                         <Link to="/" className="company-name">DANG</Link>
-                            
+                        
                         <ToastContainer
                             position="top-left"
-                            autoClose={5000}
+                            autoClose={4000}
                             hideProgressBar={false}
                             newestOnTop={false}
                             closeOnClick
@@ -179,16 +180,21 @@ class Header extends Component {
                         
                         <span className="nav-link"><i className="fa fa-bars" onClick={this.showMenu} transition={10000} ></i></span>
 
-                        {this.props.isAuthenticated ?
-                        
-                        <Link to="/cart" className="nav-link"><i className="fa fa-shopping-cart"></i></Link>
-                        
-                        :
-                        
-                        <Link to="/login" className="nav-link"><i className="fa fa-shopping-cart"></i></Link>
-                        
-                        
+                        {
+                            this.props.isAuthenticated ?
+                            this.props.cart.length === 0 ?
+                            <Link to="/cart" className="nav-link"><i className="fa fa-shopping-cart"></i></Link>
+                            :
+                            <Link to="/cart" className="nav-link"><i className="fa fa-shopping-cart">({this.props.cart.length})</i></Link>
+                            :
+                            <Link to="/login" className="nav-link"><i className="fa fa-shopping-cart"></i></Link>
+
+
+
                         }
+                        
+                        
+                        
                     </div>
                      
                 </header>
@@ -197,10 +203,11 @@ class Header extends Component {
     }
 }
 function mapStateToProps(state){
-    let {isAuthenticated, user} = state
+    let {isAuthenticated, user, cart} = state
     return{
         isAuthenticated,
-        user
+        user,
+        cart
     }
 }
 

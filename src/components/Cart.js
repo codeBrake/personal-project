@@ -89,22 +89,27 @@ class Cart extends Component {
                     <div className="cart-page">
 
                         <div className="cart-margin">
-                            <h1>Cart</h1>
+                            
                             {cart.length === 0 ? 
                             <div>
                                 <h2>Your cart is empty..</h2>
                                 <Link to="/">Continue shopping</Link>
-
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <iframe className="giphy" src="https://giphy.com/embed/fAhOtxIzrTxyE" width="480" height="250" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                             </div>
                             :
                             <div>
+                                <h1>Cart</h1>
+                                <h2 className="grand-total">Grand Total: ${Math.floor(cartTotal * 100) / 100}</h2>
                                 {
                                     boardsToDisplay.length === 0 ?
                                     (null)
                                     :
                                     <div className="cart-container">
                                         <h1>
-                                            Boards:
+                                            Snowboards:
                                         </h1>
                                         {boardsToDisplay}
                                     </div>
@@ -144,7 +149,7 @@ class Cart extends Component {
                                     </div>
                                 }
                                 
-                                <h2>Grand Total: ${Math.floor(cartTotal * 100) / 100}</h2>
+                                <h2 className="grand-total">Grand Total: ${Math.floor(cartTotal * 100) / 100}</h2>
 
                                 <Link to="/checkout"><button className="checkout-button">Checkout</button></Link>
                                 <Link to="/"><button className="checkout-button">Home</button></Link>

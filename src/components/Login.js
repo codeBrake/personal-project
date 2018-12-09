@@ -46,16 +46,26 @@ class Login extends Component {
     }
 
     handleLogin = () => {
-        axios.post('/auth/login', this.state).then(response => {
-            let user = response.data
-            this.props.userLoggedIn(user)
-            toast.success('Successfully logged in')
-        }).catch(error => {
-            console.log(error.response)
-            toast.error('The email or password you entered is incorrect')
-        })
+        if( !this.state.email[0] || !this.state.password[0]){
+            toast.error('Incorrect email or password')
+        }else{
+            axios.post('/auth/login', this.state).then(response => {
+                let user = response.data
+                this.props.userLoggedIn(user)
+                toast.success('Successfully logged in')
+            }).catch(error => {
+                console.log(error.response)
+                toast.error('The email or password you entered is incorrect')
+            })
+
+        }
     }
-    
+    // guestLogin = () => {
+    //     this.setState({
+    //         email: 'guest@email.com',
+    //         password: '1234'
+    //     })
+    // }
 
     
     render(){
@@ -64,7 +74,7 @@ class Login extends Component {
             <div className="login-component">
                 <Header {...this.props}/>
                 <div className="cart-margin">
-                    <h1>Login</h1>
+                    <h1 style={{color: "#282c34"}}>Login</h1>
                 </div>
 
                 <section className="login-container">
@@ -90,6 +100,7 @@ class Login extends Component {
                         <Link to="/register"><button className="cart-button">Register</button></Link>
                         
                     </div>
+                   
                 </section>
 
                 <div className="wipe-out">
@@ -106,9 +117,10 @@ class Login extends Component {
 }
 
 function mapStateToProps(state){
-    let {isAuthenticated} = state
+    let {isAuthenticated, user} = state
     return{
-        isAuthenticated
+        isAuthenticated,
+        user
     }
 }
 

@@ -11,7 +11,7 @@ import Footer from './Footer';
 class SearchedFor extends Component {
     
     addToCart = (id) => {
-        axios.post(`/api/cart/${id}`).then(results => {
+        axios.post(`/api/cart`, { product_id: id }).then(results => {
             this.props.getCart(results.data)
         })
     }
@@ -45,7 +45,7 @@ class SearchedFor extends Component {
                                 
                                 <button className="cart-button" onClick={() => this.addToCart(id)}>Add to Cart</button>
                                 :
-                                <div></div>
+                                <Link to="/login"><button className="cart-button">Add to Cart</button></Link>
                                 }
                             </div>
                     </div>
@@ -60,16 +60,8 @@ class SearchedFor extends Component {
 
                 </div>
                 <div className="boards-margin">
-                    <h1>Searched</h1>
-                    {this.props.isAuthenticated ?
+                    <h2>Results matching your search</h2>
                     
-                    <div></div>
-                    
-                    :
-                    
-                    <h2><Link to="/login">Login</Link> to add to cart</h2>
-                    
-                    }
                     
 
                 </div>

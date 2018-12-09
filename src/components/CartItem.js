@@ -41,7 +41,7 @@ class CartItem extends Component {
                             :
                             <div></div>
                         }
-                        <p>${price}</p>
+                        <p>Retail: ${price}</p>
                     </p>
                 </div>
     

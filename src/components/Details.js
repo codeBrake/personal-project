@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import {connect} from 'react-redux'
 import {getCart} from '../ducks/reducer'
+import {Link} from 'react-router-dom'
 
 
 class Details extends Component {
@@ -44,7 +45,7 @@ class Details extends Component {
                             <div className="product">
                                 <div>
                                     
-                                    <img className="mobile-product" src={`${item.img_url}`} style={{height: 400, width: 400}} alt=""/> 
+                                    <img className="mobile-product" src={`${item.img_url}`} style={{height: 500, width: 450}} alt=""/> 
                                 </div>
                                 <div className="board-info">
                                     <h1>{item.brand}</h1>
@@ -58,7 +59,8 @@ class Details extends Component {
                                 
                                     <button className="cart-button" onClick={() => this.addToCart(id)}>Add to Cart</button>
                                     :
-                                    <div></div>
+                                    <Link to="/login"><button className="cart-button">Add to Cart</button></Link>
+
                                     }
                                 </div>
                                 
@@ -67,31 +69,33 @@ class Details extends Component {
                                 item.category === 'boards' ?
                                 <div className="rider-profile">
                                     
-                                        <div className="rider-profile" >
-                                            <h1>{item.rider_name}</h1>
-                                            <img className="profile-img" src={`${item.profile_img_url}`} style={{height: 300, width: 400}} alt=""/>
+                                                <iframe className="youtube" id="boards-youtube" width="800" height="500" src={item.video_url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            <div className="boards-bio">
+                                                <h1>{item.rider_name}</h1>
                                                 <p id="bio-none">{item.bio}</p>
-                                                <iframe className="youtube" width="800" height="500" src={item.video_url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                        </div>
+
+                                            </div>
+                                            <img className="profile-img" src={`${item.profile_img_url}`} style={{height: 400, width: 450}} alt=""/>
+                                        
                                 </div>
                                 : item.category === 'boots' ?
                                     <div className="rider-profile">
-                                        <p>{item.bio}</p>
                                         <iframe className="youtube" width="800" height="500" src={item.video_url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        <p>{item.bio}</p>
 
                                     </div>
                                 :
                                 item.category === 'goggles' ?
                                     <div className="rider-profile">
-                                        <p>{item.bio}</p>
                                         <iframe className="youtube" width="800" height="500" src={item.video_url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        <p>{item.bio}</p>
 
                                     </div>
                                 :
                                 item.category === 'bindings' ?
                                     <div className="rider-profile">
-                                        <p>{item.bio}</p>
                                         <iframe className="youtube" width="800" height="500" src={item.video_url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        <p>{item.bio}</p>
 
 
                                     </div>

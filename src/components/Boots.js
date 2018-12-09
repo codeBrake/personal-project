@@ -47,11 +47,12 @@ class Boots extends Component {
                                 
                                 <p>size: {product.size}</p>
                                 <p>${product.price}</p>
+
                                 {this.props.isAuthenticated ? 
                                 
                                 <button className="cart-button" onClick={() => this.addToCart(id)}>Add to Cart</button>
                                 :
-                                <div></div>
+                                <Link to="/login"><button className="cart-button">Add to Cart</button></Link>
                                 }
                             </div>
                     </div>
@@ -68,15 +69,7 @@ class Boots extends Component {
                 </div>
                 <div className="boards-margin">
                     <h1>Thirty-Two Boots</h1>
-                    {this.props.isAuthenticated ?
                     
-                    <div></div>
-
-                    :
-
-                    <h2><Link to="/login">Login</Link> to add to cart</h2>
-
-                    }
 
                 </div>
                 
