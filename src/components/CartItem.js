@@ -32,16 +32,16 @@ class CartItem extends Component {
                     <img width="150" src={img_url} alt=""/>
                     <p>
                         
-                        <p>{brand}</p>
-                        <p>{model}</p>
-                        <p>{color}</p>
+                        <p id="mobile-p">{brand}</p>
+                        <p id="mobile-p">{model}</p>
+                        <p id="mobile-p">{color}</p>
                         {brand === 'Electric' ?
                             <p>frame: {frame}<br></br>
                                 lens: {lens}</p>
                             :
                             <div></div>
                         }
-                        <p>Retail: ${price}</p>
+                        <p id="mobile-p">Retail: ${price}</p>
                     </p>
                 </div>
     

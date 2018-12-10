@@ -43,10 +43,10 @@ class Boots extends Component {
                         
                             <div className="boards-description">
                               
-                                <p>{product.model}</p>
+                                <p id="mobile-p">{product.model}</p>
                                 
-                                <p>size: {product.size}</p>
-                                <p>${product.price}</p>
+                                <p id="mobile-p">size: {product.size}</p>
+                                <p id="mobile-p">${product.price}</p>
 
                                 {this.props.isAuthenticated ? 
                                 

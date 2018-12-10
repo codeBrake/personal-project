@@ -51,8 +51,8 @@ button:active {
   font-weight: bold;
   font-size: 35px;
   padding: 30px;
-  transition: font-size .2s;
-  transition: letter-spacing .2s;
+  transition: font-size .1s;
+  transition: letter-spacing .1s;
   
 }
 .company-name:hover{
@@ -80,7 +80,7 @@ button:active {
   color: greenyellow;
 }
 .search-bar{
-  margin-left: 590px;
+  margin-left: 510px;
  
 }
 .drop-menu{
@@ -158,6 +158,7 @@ button:active {
   height: 210px;
   width: 750px;
   margin-left: 25px;
+  margin-top: 10px;
 }
 .details-div{
   padding: 10px 20px;
@@ -397,7 +398,7 @@ box-shadow: 0px 0px 30px 0px greenyellow;
 }
 
 
-.boards-description{
+.detials-description{
   justify-content: space-between;
   
 }
@@ -548,6 +549,9 @@ box-shadow: 0px 0px 30px 0px greenyellow;
   flex-direction: column;
   width: 100%;
 }
+.receipt{
+  padding: 100px 50px 100px 50px;
+}
 .footer{
   background-color: #393e46;
   /* position: absolute; */
@@ -619,6 +623,9 @@ input:focus ~ label, input:valid ~ label 		{
 .bar 	{ 
   position:relative; display:block; width:300px; 
 }
+#register-h1{
+  color: #282c34;
+}
 
 .bar:before, .bar:after 	{
   content:'';
@@ -684,15 +691,21 @@ input:focus ~ .highlight {
     font-size: 25px;
     padding: 10px 15px;
   }
-  .navbar{
+  .drop-menu{
+    width: 99%;
     
   }
   .company-name{
-    font-size: 22px;
+    font-size: 26px;
+    letter-spacing: 12px;
   }
   .company-name:hover{
-    font-size: 22px;
+    
+    font-size: 26px;
+    letter-spacing: 12px;
+  
   }
+  
   .chowder{
     display: none
   }
@@ -706,20 +719,21 @@ input:focus ~ .highlight {
   .middle-page{
     width: 100%;
     height: 200px;
+    margin-top: 55px;
   }
   .info-description{
     width: 100%;
     margin: 0;
   }
-  /* .info-paragraph{
-    height: 200px;;
-  } */
+  .info-paragraph{
+    padding: 0px 10px 0px 10px;
+  }
   .aerial{
     display: none;
 
   }
   .social-div{
-    height: 200px;
+    height: 175px;
   }
   .icon-div{
     padding: 0;
@@ -756,9 +770,9 @@ input:focus ~ .highlight {
     font-size: 10px;
   }
   .search-bar{
-    margin-left: -24px;
+    margin-left: -180px;
     margin-top: 40px;
-    width: 180px;
+    width: 90%;
     position: absolute;
     border: 3px solid #282c34;
     
@@ -803,6 +817,9 @@ input:focus ~ .highlight {
     height: 100vh;
     padding-bottom: 10px;
   }
+  .detail-section{
+    padding: 40px 10px 0px 10px;
+  }
   .checkout{
     padding: 0 10px;
     height: 300px;
@@ -815,11 +832,22 @@ input:focus ~ .highlight {
     padding: 20px 0px;
     margin: 10px 0px;
     width: 100%;
-    height: 410px;
+    height: 420px;
     border-style: outset;
     border-width: 2px;
   }
-
+  .boards-description{
+    height: 120px;
+    /* border: 1px solid red; */
+    
+  }
+  
+  .searched-for-img{
+    height: 200px;
+  }
+  #mobile-p{
+    margin: 5px;
+  }
   .merch{
     padding-top: 0;
  

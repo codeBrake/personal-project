@@ -42,10 +42,10 @@ class Goggles extends Component {
                         </Link>                        
                             <div className="boards-description">
                                 {/* <p>{product.brand}</p> */}
-                                <p>{product.model}</p>
-                                <p>Frame: {product.frame}</p>
-                                <p>Lens: {product.lens}</p>
-                                <p>${product.price}</p>
+                                <p id="mobile-p">{product.model}</p>
+                                <p id="mobile-p">Frame: {product.frame}</p>
+                                <p id="mobile-p">Lens: {product.lens}</p>
+                                <p id="mobile-p">${product.price}</p>
 
                                 {this.props.isAuthenticated ? 
                                 

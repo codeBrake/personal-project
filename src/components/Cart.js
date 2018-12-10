@@ -97,7 +97,7 @@ class Cart extends Component {
                                 <br></br>
                                 <br></br>
                                 <br></br>
-                                <iframe className="giphy" src="https://giphy.com/embed/fAhOtxIzrTxyE" width="480" height="250" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                                <iframe className="giphy" src="https://giphy.com/embed/fAhOtxIzrTxyE" width="480" height="250" frameBorder="0" allowFullScreen title="Empty-Cart"></iframe>
                             </div>
                             :
                             <div>

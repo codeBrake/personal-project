@@ -24,23 +24,23 @@ class SearchedFor extends Component {
                 return(
                     
                     <div className="boards-product">
-                        <Link key={index} to={`/details/${product.id}`}>
+                        <Link className="searched-for-img" key={index} to={`/details/${product.id}`}>
                             <img className="boards-img-grow" src={product.img_url} alt=""/>
                         </Link>
-                            <div className="boards-description">
-                                <p>{product.year}</p>
-                                <p>{product.brand}</p>
-                                <p>{product.model}</p>
+                            <div className="details-description">
+                                <p id="mobile-p">{product.year}</p>
+                                <p id="mobile-p">{product.brand}</p>
+                                <p id="mobile-p">{product.model}</p>
                                 
                                 {   product.brand === 'Electric' ?
-                                    <p>frame: {product.frame}<br></br>
+                                    <p id="mobile-p">frame: {product.frame}<br></br>
                                         lens: {product.lens}</p>
                                     :
                                     <div></div>
                                 }
                                 
-                                <p>{product.size}</p>
-                                <p>${product.price}</p>
+                                <p id="mobile-p">{product.size}</p>
+                                <p id="mobile-p">${product.price}</p>
                                 {this.props.isAuthenticated ? 
                                 
                                 <button className="cart-button" onClick={() => this.addToCart(id)}>Add to Cart</button>

@@ -42,11 +42,11 @@ class Bindings extends Component {
                         </Link>
                         
                             <div className="boards-description">
-                                <p>{product.brand}</p>
-                                <p>{product.model}</p>
+                                <p id="mobile-p">{product.brand}</p>
+                                <p id="mobile-p">{product.model}</p>
                                 
-                                <p>color: {product.color}</p>
-                                <p>${product.price}</p>
+                                <p id="mobile-p">color: {product.color}</p>
+                                <p id="mobile-p">${product.price}</p>
                                 {this.props.isAuthenticated ? 
                                 
                                 <button className="cart-button" onClick={() => this.addToCart(id)}>Add to Cart</button>

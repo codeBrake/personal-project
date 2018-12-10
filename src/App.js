@@ -15,6 +15,7 @@ import Boots from './components/Boots'
 import Bindings from './components/Bindings'
 import Goggles from './components/Goggles'
 import CheckOut from './components/CheckOut'
+import Receipt from './components/Receipt'
 import axios from 'axios';
 import {connect} from 'react-redux'
 import {userLoggedIn} from './ducks/reducer'
@@ -66,6 +67,7 @@ class App extends Component {
               <Route path="/32boots" component={Boots}/>
               <Route path="/bindings" component={Bindings}/>
               <Route path="/goggles" component={Goggles}/>
+              <Route path="/receipt" component={Receipt}/>
               <Elements>
                 <Route path="/checkout" component={CheckOut}/>
               </Elements>

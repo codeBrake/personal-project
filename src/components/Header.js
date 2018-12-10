@@ -88,7 +88,9 @@ class Header extends Component {
     }
     
     render(){
-        
+        let cartCount = this.props.cart.reduce((acc, cv) => {
+            return acc + cv.quantity
+        }, 0)
         return(
                 <header className="navbar navbar-mobile" style={{transform: `translate(0, ${this.state.slide})`, transition: 'transform 300ms linear'}}>
                         {
@@ -154,8 +156,6 @@ class Header extends Component {
                             pauseOnVisibilityChange
                             draggable
                             pauseOnHover
-                           
-                            
                         />
                          
                         {
@@ -185,7 +185,7 @@ class Header extends Component {
                             this.props.cart.length === 0 ?
                             <Link to="/cart" className="nav-link"><i className="fa fa-shopping-cart"></i></Link>
                             :
-                            <Link to="/cart" className="nav-link"><i className="fa fa-shopping-cart">({this.props.cart.length})</i></Link>
+                            <Link to="/cart" className="nav-link"><i className="fa fa-shopping-cart">({cartCount})</i></Link>
                             :
                             <Link to="/login" className="nav-link"><i className="fa fa-shopping-cart"></i></Link>
 

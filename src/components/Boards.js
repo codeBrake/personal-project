@@ -41,11 +41,11 @@ class Boards extends Component {
                             <img className="boards-img-grow" src={product.img_url} alt=""/>
                         </Link>
                             <div className="boards-description">
-                                <p>{product.year}</p>
-                                <p>{product.brand}</p>
-                                <p>{product.model}</p>
-                                <p>{product.size}cm</p>
-                                <p>${product.price}</p>
+                                <p id="mobile-p">{product.year}</p>
+                                <p id="mobile-p">{product.brand}</p>
+                                <p id="mobile-p">{product.model}</p>
+                                <p id="mobile-p">{product.size}cm</p>
+                                <p id="mobile-p">${product.price}</p>
                                 
                                 {
                                     this.props.isAuthenticated ? 

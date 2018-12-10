@@ -47,8 +47,8 @@ class CheckOut extends Component {
         if(this.props.cart[0]) {
                     axios.delete('/api/cart/checkout').then(results => {
                         this.props.getCart(results.data)
-                        this.props.history.push('/')
-                        toast.success('Thank you for your purchase!')
+                        this.props.history.push('/receipt')
+                        toast.success('Purchase Complete!')
                     })
                 } else{
                     toast.error('Cart is empty')

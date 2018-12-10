@@ -59,7 +59,7 @@ class Register extends Component {
             <div className="login-component">
                 <Header/>
                 <div className="cart-margin">
-                    <h1>Register</h1>
+                    <h1 id="register-h1">Register</h1>
                 </div>
 
                 <section className="login-container">
